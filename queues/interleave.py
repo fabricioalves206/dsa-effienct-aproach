@@ -7,14 +7,14 @@ def interleave_queue(queue: deque):
     for _ in range (half_size):
         first_half.append(queue.popleft())
     
-    if len(queue) % 2 == 1:
-        queue.append(queue.popleft())
-
     while first_half:
         queue.append(first_half.popleft())
         if queue:
             queue.append(queue.popleft())
-    
+            
+    if half_size % 2 == 1:
+        queue.append(queue.popleft())
+
     return queue
 
 queue = deque()
